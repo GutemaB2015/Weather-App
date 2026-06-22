@@ -41,12 +41,12 @@
             </div>
         </div>
     </div>
-    <script src="script.js">
-        const apiKey = "106c0459a26137ddf21bc09bab89af7d ";
-        const apiUrl = "https://history.openweathermap.org/data/2.5/aggregated/year?=&units=metric&q=";
+    <script>
+        const apiKey = "106c0459a26137ddf21bc09bab89af7d";
+        const apiUrl = "https://api.openweathermap.org/data/2.5/weather?units=metric&q=";
 
 
-        const searchBox = document.querySelector(".search input");
+        const searchBox = document.querySelector(".search  input");
         const searchBtn = document.querySelector(".search button");
         const weatherIcon = document.querySelector(".weather-icon");
         
@@ -60,12 +60,10 @@
             } else{
                 var data = await response.json();
 
-
-
             document.querySelector(".city").innerHTML = data.name;
             document.querySelector(".temp").innerHTML = Math.round(data.main.temp) + "°C";
             document.querySelector(".humidity").innerHTML = data.main.humidity + "%";
-            document.querySelector(".humidity").innerHTML = data.wind.speed + " " + "km/h";
+            document.querySelector(".wind").innerHTML = data.wind.speed + "km/h";
 
             if (data.weather[0].main == "Clouds"){
                 weatherIcon.src = "images/clouds.png"
@@ -84,7 +82,7 @@
             }
 
         }
-
+        
         searchBtn.addEventListener('click', () => {
                 checkWeather(searchBox.value);
         })
